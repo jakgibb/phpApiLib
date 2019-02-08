@@ -288,7 +288,7 @@ class EspHttpTransaction
 			}
 			else
 			{
-				$ip = $_SERVER['REMOTE_ADDR'];
+				//$ip = $_SERVER['REMOTE_ADDR'];
 			}
 
 			//Set Request Headers
@@ -296,8 +296,8 @@ class EspHttpTransaction
 
 			// We only need to send the forwarded-for header if our client IP address is
 			// different to our server-ip address
-			if ($_SERVER["SERVER_ADDR"] != $ip)
-				$reqHeaders[] = "X-Forwarded-For: " . $ip;
+			//if ($_SERVER["SERVER_ADDR"] != $ip)
+			//	$reqHeaders[] = "X-Forwarded-For: " . $ip;
 
 			if (isset($data))
 			{
@@ -308,7 +308,7 @@ class EspHttpTransaction
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $reqHeaders);
 
 			// This will ensure our server knows about the client user agent
-			curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER["HTTP_USER_AGENT"]);
+			//curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER["HTTP_USER_AGENT"]);
 
 			//Execute the request
 			$response    = curl_exec($ch);
